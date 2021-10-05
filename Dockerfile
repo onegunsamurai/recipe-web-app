@@ -13,5 +13,5 @@ RUN mkdir /app
 WORKDIR /app
 COPY ./app /app
 
-RUN useradd user
+RUN useradd -ms /bin/bash user
 USER user
