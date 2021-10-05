@@ -4,6 +4,10 @@ pipeline {
 
   stages {
 
+    stage('Build Docker Image'){
+      sh 'docker build .'
+    }
+
     stage('test') {
 
       steps {
