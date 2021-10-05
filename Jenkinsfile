@@ -1,9 +1,8 @@
 pipeline {
 
-  agent none
+  agent { none }
 
   stages {
-    agent none
     stage('build') {
 
       steps {
