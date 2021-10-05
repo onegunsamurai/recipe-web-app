@@ -8,7 +8,7 @@ pipeline {
     stage('build') {
 
       steps {
-        sh 'pip install -r docker-compose'
+        sh 'sudo pip install -r docker-compose'
       }
     }
 
