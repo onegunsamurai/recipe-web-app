@@ -9,7 +9,7 @@ pipeline {
     stage('build') {
 
       steps {
-        sh 'pip install docker-compose'
+        sh 'apt-get install docker-compose -y'
       }
     }
 
