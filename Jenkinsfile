@@ -1,14 +1,14 @@
 pipeline {
 
-  agent any
+  agent {
+    docker { image 'python:3.7-apline' }
+   }
 
   stages {
     stage('build') {
 
       steps {
-        sh 'apt-get install docker-compose -y'
-        sh 'docker build .'
-        sh 'docker-compose build'
+        sh 'pip install -r docker-compose'
       }
     }
 
