@@ -1,15 +1,15 @@
 pipeline {
 
-  agent {
-    dockerfile true
-  }
+  agent none
 
   stages {
-
+    agent none
     stage('build') {
 
       steps {
         sh 'apt-get install docker-compose -y'
+        sh 'docker build .'
+        sh 'docker-compose build'
       }
     }
 
