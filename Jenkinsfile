@@ -1,6 +1,7 @@
 pipeline {
 
   agent {
+    dockerfile true
   }
 
   stages {
@@ -8,7 +9,6 @@ pipeline {
     stage('build') {
 
       steps {
-        sh 'pip install requirements.txt'
         sh 'pip install docker-compose'
       }
     }
