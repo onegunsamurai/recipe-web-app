@@ -14,7 +14,7 @@ pipeline {
     stage('test') {
 
       steps {
-        sh 'docker-compose run app sh -c "python manage.py wait_for_db &&
+        sh 'docker-compose run app sh -c "python manage.py wait_for_db && \
                                           python manage.py test"'
       }
     }
