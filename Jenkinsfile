@@ -7,8 +7,6 @@ pipeline {
     stage('Build Docker Image'){
       steps {
         sh 'export uid=${uid} && export gid=${gid}'
-        sh 'docker build .'
-        sh 'docker-compose build'
     }
   }
     stage('test') {
