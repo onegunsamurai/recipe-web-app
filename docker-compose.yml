@@ -11,7 +11,7 @@ services:
       - ./app:/app
     environment:
       - DB_HOST=db
-      - DB_NAME=app
+      - DB_NAME=postgres
       - DB_USER=postgres
       - DB_PASS=strongpassword
     command: >
@@ -25,6 +25,6 @@ services:
     image: postgres:10-alpine
     environment:
       - POSTGRES_HOST=db
-      - POSTGRES_DB=app
+      - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASS=strongpassword
