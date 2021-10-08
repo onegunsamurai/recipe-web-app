@@ -17,7 +17,7 @@ class Command(BaseCommand):
         db_conn = None
         while not db_conn:
             try:
-                db_conn = connections['default']
+                db_conn = connections['web_app_api_db_1']
             except OperationalError:
                 self.stdout.write('Db is unavailable waiting for 1 second')
                 time.sleep(1)
