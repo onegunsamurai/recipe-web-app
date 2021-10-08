@@ -24,6 +24,7 @@ services:
   db:
     image: postgres:10-alpine
     environment:
+      - DB_HOST=db
       - POSTGRES_DB=app
       - POSTGRES_USER=postgres
       - POSTGRES_PASS=strongpassword
