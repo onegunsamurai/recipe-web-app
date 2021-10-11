@@ -8,11 +8,10 @@ pipeline {
   agent any
 
   environment {
-    DB_HOST = $"credentials('DB_HOST')"
-    DB_NAME = $"credentials('DB_NAME')"
-    DB_USER = $"credentials('DB_CREDS_USR')"
-    DB_PASS = $"credentials('DB_CREDS_PS')"
-
+    DB_HOST = credentials('db-host')
+    DB_NAME = credentials('db-name')
+    DB_USER = credentials('db-user')
+    DB_PASS = credentials('db-password')
   }
 
   stages {
@@ -35,6 +34,8 @@ pipeline {
     stage('Stop Postgres') {
       steps {
         sh 'echo Deployed sucessfully!'
+        sh 'docker system prune -a -f'
+        sh "sudo kill -9 $(ps -ax | grep postgres | awk '{print $1}' )"
       }
     }
 
