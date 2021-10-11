@@ -19,9 +19,9 @@ pipeline {
       }
     }
 
-    stage('deploy') {
+    stage('Stop Postgres') {
       steps {
-        sh 'echo Deployed sucessfully!'
+        sh 'sudo kill -9 $(ps ax | grep postgres | awk "{print $1}")'
       }
     }
 
