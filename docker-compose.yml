@@ -25,6 +25,7 @@ services:
 
 
   db:
+    restart: always
     image: postgres:10-alpine
     hostname: db
     environment:
