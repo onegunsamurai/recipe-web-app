@@ -1,3 +1,8 @@
+def DB_HOST
+def DB_NAME
+def DB_USER
+def DB_PASS
+
 pipeline {
 
   agent any
