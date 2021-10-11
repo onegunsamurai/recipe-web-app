@@ -14,26 +14,15 @@ services:
       - DB_USER=postgres
       - DB_PASS=postgres
     command: >
-      sh -c " python manage.py migrate &&
-              python manage.py runserver 0.0.0.0:8000"
+      sh -c "python manage.py runserver 0.0.0.0:8000"
 
     depends_on:
       - db
-    networks:
-      - djangonetwork
 
   db:
-    build:
-      context: .
     image: postgres:10-alpine
     hostname: db
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-    networks:
-      - djangonetwork
-
-networks:
-  djangonetwork:
-    driver: bridge
