@@ -19,11 +19,21 @@ services:
 
     depends_on:
       - db
+    networks:
+      - djangonetwork
 
   db:
+    build:
+      context: .
     image: postgres:10-alpine
     hostname: db
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+    networks:
+      - djangonetwork
+
+networks:
+  djangonetwork:
+    driver: bridge
