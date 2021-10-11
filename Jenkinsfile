@@ -35,7 +35,6 @@ pipeline {
       steps {
         sh 'echo Deployed sucessfully!'
         sh 'docker system prune -a -f'
-        sh 'sudo kill -9 $(ps -ax | grep postgres | awk "{print $1}" )'
       }
     }
 
