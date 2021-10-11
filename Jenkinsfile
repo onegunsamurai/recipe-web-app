@@ -10,8 +10,8 @@ pipeline {
   environment {
     DB_HOST = credentials('DB_HOST')
     DB_NAME = credentials('DB_NAME')
-    DB_USER = credentials('DB_USER')
-    DB_PASS = credentials('DB_PASS')
+    DB_USER = credentials('DB_CREDS_USR')
+    DB_PASS = credentials('DB_CREDS_PS')
   }
 
   stages {
