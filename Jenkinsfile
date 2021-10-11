@@ -14,6 +14,7 @@ pipeline {
     stage('test') {
 
       steps {
+        sh "docker-compose run app sh -c 'python manage.py migrate'"
         sh 'docker-compose run app sh -c "python manage.py test"'
       }
     }
