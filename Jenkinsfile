@@ -40,10 +40,9 @@ pipeline {
       }
 
 
-    stage('Stop Postgres') {
+    stage('Cleanup') {
       steps {
         sh 'echo Deployed sucessfully!'
-        sh 'docker system prune -a -f'
       }
     }
 
