@@ -25,8 +25,8 @@ pipeline {
     stage('Run Unit Tests') {
 
       steps {
-        sh "docker-compose run web sh -c 'python manage.py migrate'"
-        sh 'docker-compose run web sh -c "python manage.py test"'
+        sh "docker-compose run app sh -c 'python manage.py migrate'"
+        sh 'docker-compose run app sh -c "python manage.py test"'
       }
     }
 
