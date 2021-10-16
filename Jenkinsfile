@@ -19,7 +19,7 @@ pipeline {
       steps {
         script {
         sh "docker build -t $registry ."
-        sh "docker compose build"
+        sh "docker-compose build"
       }
     }
   }
