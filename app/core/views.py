@@ -4,7 +4,5 @@ from .models import User
 
 
 class UserListView(generic.ListView):
-    model = User
-    context_object_name = 'users'
     queryset = User.objects.all()
-    template_name = 'allusers.html'
+    template_name = 'index.html'
