@@ -44,15 +44,9 @@ pipeline {
 
     stage('Publish Over SSH') {
       steps {
-        sh 'echo Deployed sucessfully!'
-        def remote = [:]
-        remote.name = 'Main'
-        remote.host = '34.233.80.169'
-        remote.user = 'ubuntu'
-        remote.allowAnyHosts = true
-        sshCommand remote: remote, command: 'git clone git@github.com:onegunsamurai/recipe-web-app.git'
-        sshCommand remote: remote, command: 'docker-compose up'
-        sshCommand remote: remote, command: 'exit'
+        sshPublisher(publishers: [sshPublisherDesc(configName: 'Main', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''git clone git@github.com:onegunsamurai/recipe-web-app.git \\
+        docker-compose up''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/home/ubuntu/project', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+
       }
     }
 
