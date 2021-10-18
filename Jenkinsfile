@@ -44,7 +44,7 @@ pipeline {
     stage('Publish Over SSH') {
       steps {
         sh 'echo Deployed sucessfully!'
-        sh 'ssh ubuntu@34.233.80.169'
+        sh 'ssh -T ubuntu@34.233.80.169'
         sh 'cd project'
         sh 'git clone git@github.com:onegunsamurai/recipe-web-app.git'
         sh 'docker-compose up'
