@@ -11,6 +11,7 @@ pipeline {
     DB_PASS = credentials('db-password')
     registry = 'onegunsamurai/ogs-django-web-app'
     DOCKERHUB_CREDENTIALS = credentials('docker-id')
+    PRIV_KEY = credentials('SSH-SERV-CREDS')
   }
 
   stages {
@@ -44,7 +45,7 @@ pipeline {
     stage('Publish Over SSH') {
       steps {
         sh 'echo Deployed sucessfully!'
-        sh 'ssh -T ubuntu@34.233.80.169'
+        sh 'ssh -T ubuntu@34.233.80.169 -i $PRIV_KEY_PSW'
         sh 'cd project'
         sh 'git clone git@github.com:onegunsamurai/recipe-web-app.git'
         sh 'docker-compose up'
