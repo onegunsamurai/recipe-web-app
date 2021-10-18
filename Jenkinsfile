@@ -11,11 +11,7 @@ pipeline {
     DB_PASS = credentials('db-password')
     registry = 'onegunsamurai/ogs-django-web-app'
     DOCKERHUB_CREDENTIALS = credentials('docker-id')
-    def remote = [:]
-    remote.name = 'Main'
-    remote.host = '34.233.80.169'
-    remote.user = 'ubuntu'
-    remote.allowAnyHosts = true
+
   }
 
   stages {
@@ -49,6 +45,11 @@ pipeline {
     stage('Publish Over SSH') {
       steps {
         sh 'echo Deployed sucessfully!'
+        def remote = [:]
+        remote.name = 'Main'
+        remote.host = '34.233.80.169'
+        remote.user = 'ubuntu'
+        remote.allowAnyHosts = true
         sshCommand remote: remote, command: 'git clone git@github.com:onegunsamurai/recipe-web-app.git'
         sshCommand remote: remote, command: 'docker-compose up'
         sshCommand remote: remote, command: 'exit'
