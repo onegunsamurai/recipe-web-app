@@ -16,14 +16,14 @@ pipeline {
 
   stages {
 
-  //   stage('Build Docker Image'){
-  //     steps {
-  //       script {
-  //       sh "docker build -t $registry ."
-  //       sh "docker-compose build"
-  //     }
-  //   }
-  // }
+    stage('Build Docker Image'){
+      steps {
+        script {
+        sh "docker build -t $registry ."
+        sh "docker-compose build"
+      }
+    }
+  }
     // stage('Run Unit Tests') {
     //
     //   steps {
@@ -32,14 +32,14 @@ pipeline {
     //   }
     // }
 
-    // stage('Push To DockerHub') {
-    //   steps {
-    //       script {
-    //         sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-    //         sh "docker push $registry"
-    //       }
-    //     }
-    //   }
+    stage('Push To DockerHub') {
+      steps {
+          script {
+            sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+            sh "docker push $registry"
+          }
+        }
+      }
 
 
     stage('Publish Over SSH') {
