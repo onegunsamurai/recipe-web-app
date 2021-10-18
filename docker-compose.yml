@@ -28,6 +28,8 @@ services:
     restart: always
     image: postgres:10-alpine
     hostname: db
+    volumes:
+      - postgres_data:/var/lib/postgres/data
     environment:
       - POSTGRES_DB=${DB_NAME}
       - POSTGRES_USER=${DB_USER}
@@ -37,3 +39,6 @@ services:
 networks:
     djangonetwork:
         driver: bridge
+
+volumes:
+  postgres_data:

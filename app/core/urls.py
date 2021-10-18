@@ -3,6 +3,6 @@ from .views import UserListView
 
 urlpatterns = [
 
-    path('', UserListView.as_view(), name='all_users')
+    path('', UserListView.as_view(), name='index')
 
 ]
