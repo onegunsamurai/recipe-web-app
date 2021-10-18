@@ -46,6 +46,7 @@ pipeline {
       steps {
         sshPublisher(publishers: [sshPublisherDesc(configName: 'Main', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand:
         """cd recipe-web-app
+           git pull
            export DB_HOST=${DB_HOST}
            export DB_NAME=${DB_NAME}
            export DB_USER=${DB_USER}
