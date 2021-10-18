@@ -24,13 +24,13 @@ pipeline {
       }
     }
   }
-    // stage('Run Unit Tests') {
-    //
-    //   steps {
-    //     sh "docker-compose run app sh -c 'python manage.py migrate'"
-    //     sh 'docker-compose run app sh -c "python manage.py test"'
-    //   }
-    // }
+    stage('Run Unit Tests') {
+
+      steps {
+        sh "docker-compose run app sh -c 'python manage.py migrate'"
+        sh 'docker-compose run app sh -c "python manage.py test"'
+      }
+    }
 
     stage('Push To DockerHub') {
       steps {
@@ -52,7 +52,18 @@ pipeline {
            export DB_USER=${DB_USER}
            export DB_PASS=${DB_PASS}
            """
-        , execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+        , execTimeout: 120000,
+        flatten: false,
+        makeEmptyDirs: false,
+        noDefaultExcludes: false,
+        patternSeparator: '[, ]+',
+        remoteDirectory: '',
+        remoteDirectorySDF: false, r
+        emovePrefix: '',
+        sourceFiles: '')],
+        usePromotionTimestamp: false,
+        useWorkspaceInPromotion: false,
+        verbose: false)])
       }
     }
 
