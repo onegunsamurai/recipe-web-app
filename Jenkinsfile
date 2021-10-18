@@ -46,9 +46,9 @@ pipeline {
       steps {
         sshPublisher(publishers:
           [sshPublisherDesc(configName: 'Main', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand:
-          '''git clone git@github.com:onegunsamurai/recipe-web-app.git
-              cd recipe-web-app
-                docker-compose up''', 
+          '''git clone git@github.com:onegunsamurai/recipe-web-app.git \\
+              cd recipe-web-app \\
+                docker-compose up''',
                 execTimeout: 120000,
                 flatten: false,
                 makeEmptyDirs: false,
