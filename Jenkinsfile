@@ -44,10 +44,10 @@ pipeline {
 
     stage('Publish Over SSH') {
       steps {
-        sshPublisher(publishers: [sshPublisherDesc(configName: 'Main', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: """
-        cd recipe-web-app"""
+        sshPublisher(publishers: [sshPublisherDesc(configName: 'Main', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand:
+        """cd recipe-web-app"""
         """export DB_HOST=${DB_HOST}"""
-        """, execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+        , execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
       }
     }
 
