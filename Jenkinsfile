@@ -58,8 +58,8 @@ pipeline {
         noDefaultExcludes: false,
         patternSeparator: '[, ]+',
         remoteDirectory: '',
-        remoteDirectorySDF: false, r
-        emovePrefix: '',
+        remoteDirectorySDF: false,
+        removePrefix: '',
         sourceFiles: '')],
         usePromotionTimestamp: false,
         useWorkspaceInPromotion: false,
