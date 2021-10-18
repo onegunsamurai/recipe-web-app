@@ -11,6 +11,7 @@ pipeline {
     DB_PASS = credentials('db-password')
     registry = 'onegunsamurai/ogs-django-web-app'
     DOCKERHUB_CREDENTIALS = credentials('docker-id')
+
   }
 
   stages {
@@ -41,9 +42,11 @@ pipeline {
       }
 
 
-    stage('Cleanup') {
+    stage('Publish Over SSH') {
       steps {
-        sh 'echo Deployed sucessfully!'
+        sshPublisher(publishers: [sshPublisherDesc(configName: 'Main', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''git clone git@github.com:onegunsamurai/recipe-web-app.git
+        cd recipe-web-app
+        docker-compose up''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
       }
     }
 
