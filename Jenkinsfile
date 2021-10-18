@@ -44,13 +44,8 @@ pipeline {
 
     stage('Publish Over SSH') {
       steps {
-        sshPublisher(publishers: [sshPublisherDesc(configName: 'Main', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: """cd recipe-web-app
-        git pull
-        export DB_HOST="""+${DB_HOST}+"""
-        export DB_NAME="""+${DB_NAME}+"""
-        export DB_USER="""+${DB_USER}+"""
-        export DB_PASS="""+${DB_PASS}+"""
-        docker-compose up &
+        sshPublisher(publishers: [sshPublisherDesc(configName: 'Main', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: """
+        cd recipe-web-app
         """, execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
       }
     }
