@@ -44,8 +44,12 @@ pipeline {
 
     stage('Publish Over SSH') {
       steps {
-        sshPublisher(publishers: [sshPublisherDesc(configName: 'Main', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'git clone git@github.com:onegunsamurai/recipe-web-app.git', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
-
+        sshPublisher(publishers: [sshPublisherDesc(configName: 'Main', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''git clone git@github.com:onegunsamurai/recipe-web-app.git
+        cd recipe-web-app
+        export DB_HOST=db
+        export DB_NAME=$DB_NAME
+        export DB_USER=$DB_USER
+        export DB_PASS=$DB_PASS''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
       }
     }
 
