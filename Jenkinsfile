@@ -44,8 +44,7 @@ pipeline {
 
     stage('Publish Over SSH') {
       steps {
-        sshPublisher(publishers: [sshPublisherDesc(configName: 'Main', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''git clone git@github.com:onegunsamurai/recipe-web-app.git \\
-        docker-compose up''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/home/ubuntu/project', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+        sshPublisher(publishers: [sshPublisherDesc(configName: 'Main', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''git clone git@github.com:onegunsamurai/recipe-web-app.git''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/home/ubuntu/project', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
 
       }
     }
