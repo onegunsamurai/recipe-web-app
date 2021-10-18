@@ -141,3 +141,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #
 #   then ran: python manage.py migrations core  - to change dependencies
 AUTH_USER_MODEL = 'core.User'
+
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
